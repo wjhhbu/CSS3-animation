@@ -2,9 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CSS3</title>
+  <title>CSS3 动画学习笔记</title>
+  <style>
+    html {
+      font-size: 12px;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      width: 100vw;
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template: 80vh 20vh/ 1fr;
+    }
+
+    article {
+      overflow: auto;
+    }
+
+    section h4 {
+      padding-left: 1rem;
+    }
+    section div {
+      padding-left: 3rem;
+    }
+
+    .container {
+      display: grid;
+      /*grid-template-rows: repeat(1,1fr);*/
+      /*grid-template-columns: repeat(4,1fr);*/
+      grid-template: 1fr / repeat(4,1fr);
+      width: 400px;
+      /*height: 80px;*/
+      align-self: center;
+      justify-self: center;
+    }
+
+    .container div {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      background: antiquewhite;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+
+      /*animation: moveAnimation 2s 5s;*/
+      animation-duration: 2s;
+      animation-delay: 3s;
+    }
+
+    .container div:nth-child(1) {
+      animation-name: moveAnimation;
+      animation-fill-mode: none;
+    }
+    .container div:nth-child(2) {
+      animation-name: moveAnimation;
+      animation-fill-mode: backwards;
+    }
+    .container div:nth-child(3) {
+      animation-name: moveAnimation;
+      animation-fill-mode: forwards;
+    }
+    .container div:nth-child(4) {
+      animation-name: moveAnimation;
+      animation-fill-mode: both;
+    }
+
+    /* 动画 */
+    @keyframes moveAnimation {
+      from {
+        transform: scale(0.5);
+      }
+
+      to {
+        transform: scale(1);
+        background: red;
+      }
+    }
+
+  </style>
+  <script>
+    /*
+    *
+    *
+    * */
+  </script>
 </head>
 <body>
+  <article>
+    <header><h3>CSS3 动画属性如下：</h3></header>
+    <main>
+      <section>
+        <h4>@keyframes：</h4>
+        <pre>
+        定义动画：@keyframes  animationName {
+          0 - 100%;
+          from {} // 相当于 0%
+          to {} 相当于 100%
+        }
+      </pre>
+      </section>
 
+      <section>
+        <h4>animation-name：<span>动画的名称</span></h4>
+      </section>
+
+      <section>
+        <h4>animation-duration：<span>完成一个动画的时间，例如 5s ， 5ms ；默认 0</span></h4>
+      </section>
+
+      <section>
+        <h4>animation-relay：<span>动画延迟时间，例如 4s ，4ms </span></h4>
+      </section>
+
+      <section>
+        <h4>animation-direction：<span>下一个动画播放的方向</span></h4>
+        <div>
+          normal：默认值，正常播放；<br />
+          alternate：反向轮流播放
+        </div>
+      </section>
+
+      <section>
+        <h4>animation-play-state：<span>动画播放的状态</span></h4>
+        <div>
+          running：播放；<br />
+          paused：暂停
+        </div>
+      </section>
+
+      <section>
+        <h4>animation-timing-function：<span>动画运动速度曲线</span></h4>
+        <div>
+          ease：默认，低速开始，然后加快，结束变慢<br />
+          ease-in：低速开始<br />
+          ease-out：低速结束<br />
+          ease-in-out：低速开始和结束<br />
+          linear：线性匀速<br />
+        </div>
+      </section>
+
+      <section>
+        <h4>animation-fill-mode：<span>动画前后的动画状态</span></h4>
+        <div>
+          none：默认值，原始状态<br />
+          forwards：使用动画完成后的状态，即 最后一帧时的状态<br />
+          backwards：使用动画前的状态， 即 第一帧的状态<br />
+          both：使用动画前和动画后的状态，即第一帧和最后一帧的状态<br />
+        </div>
+      </section>
+
+      <section>
+        <h4>animation-iteration-count：<span>动画循环次数</span></h4>
+        <div>
+          默认值：1，<br />
+          infinite：无限循环
+        </div>
+      </section>
+
+      <section>
+        <h4>animation：<span>动画总简写</span></h4>
+        <div>
+          规则：name duration relay ...(其他属性值)；relay 的值 一定要放在 duration 后面
+        </div>
+      </section>
+
+    </main>
+  </article>
+  <main class="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </main>
 </body>
 </html>
